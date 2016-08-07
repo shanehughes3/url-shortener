@@ -1,4 +1,5 @@
 var config = require("./config"),
+    ObjectId = require("mongodb").ObjectId,
     mongoose = require("mongoose"),
     db = mongoose.connect(config.db),
     Schema = mongoose.Schema;
@@ -20,6 +21,21 @@ exports.create = function(newURL, cb) {
     });
 }
 
-exports.retrieve = function(reqKey) {
-
+exports.retrieve = function(reqKey, cb) {
+    var reqID;
+    try {
+	reqID = new ObjectId(reqKey);
+    } catch (e) {
+	console.log(e);
+	cb(null, null);
+    }
+    Entry.findOne({
+	_id: reqKey
+    }, "url", function(err, output) {
+	if (err) {
+	    cb(err);
+	} else {
+	    cb(null, output.url);
+	}
+    });
 }
