@@ -26,7 +26,6 @@ exports.retrieve = function(reqKey, cb) {
     try {
 	reqID = new ObjectId(reqKey);
     } catch (e) {
-	console.log(e);
 	cb(null, null);
     }
     Entry.findOne({
