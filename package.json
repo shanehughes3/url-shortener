@@ -16,6 +16,10 @@
   "bugs": {
     "url": "https://github.com/shanehughes3/url-shortener/issues"
   },
+  "engines": {
+    "node": "6.3.0",
+    "npm": "3.10.5"
+  }
   "homepage": "https://github.com/shanehughes3/url-shortener#readme",
   "dependencies": {
     "express": "^4.14.0",
